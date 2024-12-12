@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners -->
+  <meta name="description" content="CellCut: Unsupervised Cellular Image Segmentation through Self-Supervision">
+  <meta property="og:title" content="CellCut: Unsupervised Cellular Image Segmentation"/>
+  <meta property="og:description" content="A novel unsupervised/semi-supervised method for cell image segmentation using self-supervised learning"/>
+  <meta property="og:url" content="YOUR_WEBSITE_URL"/>
+  <meta property="og:image" content="static/images/your_banner_image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="CellCut: Unsupervised Cell Segmentation">
+  <meta name="twitter:description" content="Self-supervised learning for cell image segmentation without manual annotations">
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="keywords" content="cell segmentation, computer vision, unsupervised learning, self-supervision, microscopy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CellCut: Unsupervised Cellular Image Segmentation</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">CellCut: Unsupervised Cellular Image Segmentation through Self-Supervision</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="#" target="_blank">Markus Markus</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Neehar Kondapaneni</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Aditya Mehta</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Andrew Zabelo</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Pietro Perona</a>
+                </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">California Institute of Technology<br>CVPR 2025</span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv PDF link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/PLACEHOLDER" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/YOUR_REPO" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Cells are essential components of biological systems, and accurately segmenting them is crucial for analyzing microscopy images. While deep learning has improved cell segmentation, it relies on large annotated datasets, which are often unavailable for new imaging conditions. Variations in cell size, shape, and imaging methods usually require new training data, and existing models struggle with out-of-distribution cells. To address this, we propose a novel unsupervised/semi-supervised method leveraging self-supervised models to identify patch-level similarities in cell images. Using these similarities, our method iteratively creates cell masks, builds an initial training set, and improves segmentation through self-training. This approach reduces the need for manual annotations, enabling more effective high-throughput image analysis and broader applicability of segmentation models. We show that we can fine-tune state-of-the-art cell segmentation models on some out-of-distribution datasets and achieve close to fully supervised performance with only 20 manually annotated cells.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{cellcut2025,
+  title={CellCut: Unsupervised Cellular Image Segmentation through Self-Supervision},
+  author={Markus, M. and Kondapaneni, N. and Mehta, A. and Zabelo, A. and Perona, P.},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Anonymous CVPR 2025 submission (Paper ID 7605). <br>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
