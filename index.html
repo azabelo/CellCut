@@ -36,6 +36,37 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <!-- Additional CSS for cycling the authors -->
+  <style>
+    .author-block {
+      display: none; /* Initially hide all authors */
+    }
+
+    .author-block.show {
+      display: inline; /* Show authors with the 'show' class */
+    }
+  </style>
+
+  <!-- JavaScript to cycle author names -->
+  <script>
+    let currentIndex = 0;
+    const authors = document.querySelectorAll('.primary-author');
+
+    function cycleAuthors() {
+      authors.forEach((author, index) => {
+        if (index === currentIndex) {
+          author.classList.add('show');
+        } else {
+          author.classList.remove('show');
+        }
+      });
+      currentIndex = (currentIndex + 1) % authors.length;
+    }
+
+    setInterval(cycleAuthors, 3000); // Change authors every 3 seconds
+    window.onload = cycleAuthors; // Start cycling when the page loads
+  </script>
 </head>
 <body>
   <section class="hero">
@@ -45,17 +76,21 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">CellCut: Unsupervised Cellular Image Segmentation through Self-Supervision</h1>
             <div class="is-size-5 publication-authors">
+              <span class="author-block primary-author">
+                <a href="#" target="_blank">Andrew Zabelo</a><sup>*</sup>,
+              </span>
+              <span class="author-block primary-author">
+                <a href="#" target="_blank">Aditya Mehta</a><sup>*</sup>,
+              </span>
+              <span class="author-block primary-author">
+                <a href="#" target="_blank">Markus Markus</a><sup>*</sup>,
+              </span>
               <span class="author-block">
-                <a href="#" target="_blank">Markus Markus</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Aditya Mehta</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Andrew Zabelo</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Neehar Kondapaneni</a>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Pietro Perona</a>
-                </span>
+                <a href="#" target="_blank">Neehar Kondapaneni</a>,
+              </span>
+              <span class="author-block">
+                <a href="#" target="_blank">Pietro Perona</a>
+              </span>
             </div>
 
             <div class="is-size-5 publication-authors">
