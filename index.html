@@ -216,7 +216,7 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            Cells are essential components of biological systems, and accurately segmenting them is crucial for analyzing microscopy images. While deep learning has improved cell segmentation, <b>it relies on large annotated datasets, which are often unavailable for new imaging conditions.</b> Variations in cell size, shape, and imaging methods usually require new training data, and existing models struggle with out-of-distribution cells.<br><br>To address this, we propose a <b>novel unsupervised/semi-supervised method</b> leveraging self-supervised models to identify patch-level similarities in cell images. Using these similarities, <b>our method iteratively creates cell masks, builds an initial training set, and improves segmentation through self-training.</b><br><br><b>This approach reduces the need for manual annotations, enabling more effective high-throughput image analysis and broader applicability of segmentation models.</b> We show that we can fine-tune state-of-the-art cell segmentation models on some out-of-distribution datasets and achieve close to fully supervised performance with only 20 manually annotated cells.
+      		Cells are essential components of biological systems, and accurately segmenting them is crucial for analyzing microscopy images. While deep learning has improved cell segmentation, <b>it relies on large annotated datasets, which are often unavailable for new imaging conditions.</b> Variations in cell size, shape, and imaging modality usually require new training data, and existing models struggle with out-of-distribution cells. To address this, we propose a <b>novel approach leveraging self-supervised models</b> to identify patch-level similarities in cell images, which can be effectively applied in both unsupervised and semi-supervised settings. Leveraging these patch-level similarities, <b>our approach iteratively generates precise cell masks</b> to construct an initial training set, progressively refining segmentation accuracy via self-training. <b>This approach reduces the need for manual annotations</b>, enabling more effective high-throughput image analysis and broader applicability of segmentation models. We show that we can fine-tune state-of-the-art cell segmentation models on some out-of- distribution datasets and <b>achieve close to fully supervised fine-tuning performance with only 20 manually annotated cells (less than 0.1% of data)</b>.
           </p>
         </div>
       </div>
@@ -234,33 +234,17 @@
 </section>
 
 
-<!-- <section style="margin-top: 80px;"> 
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-full">
-          <figure class="image">
-            <img src="static/images/complete_method.pdf" alt="Figure 2 description" >
-            <figcaption class="content has-text-justified" style="margin-top: 40px;">
-              <br><b>CellCut.</b> First, we finetune a DINO model on an unlabelled cell image dataset. After training, DINO features are used with our region-growing method (CellCut) to generate coarse pseudo-masks. Coarse pseudo-masks are refined through self-training with Drop Loss, resulting in high-quality masks. These refined masks are then used to fine-tune a cell segmentation model, achieving robust segmentation on out-of-sample datasets.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-  </div>
-</section> -->
-
-
 
 <section style="margin-top: 80px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-full">
         <figure class="image">
-          <img src="static/images/complete_method.pdf" alt="Figure 2 description" style="width: 100%; height: auto;">
+          <img src="static/images/complete_method.png" alt="Figure Missing" style="width: 100%; height: auto;">
           <figcaption class="content has-text-justified" style="margin-top: 40px;">
             <div class="columns is-centered">
             <div class="column is-four-fifths">
-            <br><b>CellCut Overview.</b> First, we finetune a DINO model on an unlabelled cell image dataset. After training, DINO features are used with our region-growing method (CellCut) to generate coarse pseudo-masks. Coarse pseudo-masks are refined through self-training with Drop Loss, resulting in high-quality masks. These refined masks are then used to fine-tune a cell segmentation model, achieving robust segmentation on out-of-sample datasets.
+            <br><b>CellCut: unsupervised cellular image segmentation.</b> C Our method for training a zero/few-shot cellular segmentation model comprises several stages. First, we fine-tune a DINO model on an unlabeled cell image dataset. After training, DINO features are used with our region-growing method to generate coarse pseudo-masks. Coarse pseudo-masks are refined through self-training with DropLoss, resulting in high-quality masks. These refined masks are then used to fine-tune a cell segmentation model, achieving robust segmentation on out-of-sample datasets.
           </div>
         </div>
           </figcaption>
@@ -271,42 +255,6 @@
 </section>
 
 
-
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-          <div class="container is-max-desktop">
-            <figure class="image">
-              <img src="static/images/masking_method.pdf" alt="Figure 3 description">
-              <figcaption class="content has-text-justified">
-                <br><b>Pseudo-mask Generation.</b> First, we embed an image using a pre-trained DINO model. We select a seed feature (see Fig. 4, Sec. 3.2) and generate a similarity map between the seed feature and all other patches. We smooth the similarity map and perform a region-growing cut starting from the seed feature. The cut region is masked from the DINO features. This process is repeated until our heuristic stopping condition is reached.
-              </figcaption>
-            </figure>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> 
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-          <figure class="image">
-            <img src="static/images/seed_selection.pdf" alt="Figure 3 description">
-            <figcaption class="content has-text-justified">
-              <br><b>Seed Selection.</b> 
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
-
 <section class="hero is-small" style="margin-top: 80px;">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -315,7 +263,7 @@
         
         <div class="column is-half">
           <figure class="image">
-            <img src="static/images/masking_method.pdf" alt="Figure 3 description">
+            <img src="static/images/masking_method.png" alt="Figure Missing">
             <figcaption class="content has-text-justified">
               <br><b>Pseudo-mask Generation.</b> First, we embed an image using a pre-trained DINO model. We select a seed feature (either supervised or unsupervised) and generate a similarity map between the seed feature and all other patches. We smooth the similarity map and perform a region-growing cut starting from the seed feature. The cut region is masked from the DINO features. This process is repeated until our heuristic stopping condition is reached.
             </figcaption>
@@ -325,9 +273,9 @@
         <!-- Second image -->
         <div class="column is-half">
           <figure class="image">
-            <img src="static/images/seed_selection.pdf" alt="Figure 3 description">
+            <img src="static/images/seed_selection.png" alt="Figure Missing">
             <figcaption class="content has-text-justified">
-              <br><br><b>Seed Selection.</b> Our unsupervised method for seed selection uses an affinity matrix to select the maximally activated patch of an NCut bipartition. Our semi-supervised method leverages the embeddings from only a few labeled cells (∼20) to produce a query “cell” feature vector to discover cells in the DINO latent space. 
+              <br><br><b>Seed Selection.</b>  Our unsupervised method for seed selection uses the 2nd smallest eigenvector of the affinity matrix to select the maximally activated patch. Our semi-supervised method leverages the embeddings from only a few labeled cells and labeled background patches (∼ 20 each, which is < 0.1% of available labels) to produce a query “cell” feature to discover cells in the DINO latent space.
             </figcaption>
           </figure>
         </div>
@@ -337,9 +285,28 @@
   </div>
 </section>
 
+<!-- detector training -->
+
+<section style="margin-top: 80px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/Roundwise.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-justified" style="margin-top: 40px;">
+            <div class="columns is-centered">
+            <div class="column is-four-fifths">
+            <br><b>Qualitative assessment of method stages. </b> DropLoss and self-training refine coarse masks generated by our region- growing pseudo-mask generator for DSB and CIL.
+          </div>
+        </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+ </section>
 
 
-<!-- Results Section -->
 <section class="section hero" style="background-color: #f0f0f0; margin-top: 80px;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -348,212 +315,206 @@
   </div>
 </section>
 
-<!-- <section class="hero is-small">
+
+
+<!-- DSB -->
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/DSB_Qual_Big.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(a) DSB</b>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIL -->
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/Cellpose_Qual_Big.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(b) Cell Image Library</b>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Pannuke -->
+
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/diagrams.png" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(c) Pannuke</b>
+              </div>
+            </div>
+          </figcaption>
+          <figcaption class="content has-text-justified" style="margin-top: 10;">
+            <div class="columns is-centered">
+            <div class="column is-four-fifths">
+            <br><b>Qualitative Results.</b> Despite having no/few labels, CellCut can effectively discriminate between instance and background in highly homogeneous images and generalizes to various cell types, sizes, and sparsities. The above displays prediction and ground truth masks on the (a) DSB, (b) Cell Image Library, and (c) Pannuke datasets. 
+          </div>
+        </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- additional experiments -->
+
+<section class="hero is-small" style="margin-top: 80px;">
   <div class="hero-body">
+    <div class="container is-max-desktop">
     <div class="container">
       <div class="columns is-centered">
-        <div class="column is-four-fifths">
+        
+        <div class="column is-half">
           <figure class="image">
-            <img src="static/images/diagrams.png" alt="Figure 4 description">
+            <img src="static/images/backbone_resolution_comparison.png" alt="Figure Missing">
             <figcaption class="content has-text-justified">
-              <b>Resulting Masks by Tissue Type</b> 
+              <br><b>Higher Resolutions during Region Growing.</b>  We perform an ablation using varying crop sizes to examine the effects of different resolutions during the region growing stage for DSB unsupervised (we test crop sizes of 64 × 64, 128 × 128, and 256 × 256 pixels). We do this with the DINO and ViTDeT backbones before proceeding to the DropLoss and self-training stages. Higher resolutions consistently lead to better performance. Given this, we attempt to push the unsupervised performance on DSB by using the ViTDeT backbone with 64 × 64 crop size, finding that this yields significant improvement, further shrinking the gap to fully supervised methods.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Second image -->
+        <div class="column is-half">
+          <figure class="image">
+            <img src="static/images/models_ap50_bar_plot-4.png" alt="Figure Missing">
+            <figcaption class="content has-text-justified">
+              <br><br><b>Alternative Backbones.</b> To explore the behavior of our method when using different backbones, we run region-growing for DSB using hierarchical DINO trained on cellular data (HIPT), MAE, vanilla ViT, SAM-ViT, and ViTDeT. We find that out-of-the-box SAM-ViT and ViTDeT both perform better than DINO. This is somewhat expected, as SAM-ViT and ViTDeT are fine-tuned for segmentation/object detection on large-scale datasets.
             </figcaption>
           </figure>
         </div>
       </div>
+      </div>
     </div>
   </div>
-</section> -->
+</section>
 
-<!-- <div id="image-container" style="margin-top: 80px;">
-  <figure class="image">
-    <img id="main-image" src="static/images/diagrams.png" usemap="#image-map">
-    <div id="zoom-overlay"></div>
-    <figcaption class="content has-text-justified">
-      <div class="columns is-centered">
-            <div class="column is-four-fifths">
-          <br><b>Qualiative results by tissue type.</b> CellCut predictions and ground truth annotations stratified by tissue type. Our method is able to handle various cell sizes and sparsities. Despite having no/few labels, CellCut can effectively discriminate between instance and background in highly homogeneous images. 
-        </div>
-      </div>
-        </figcaption>
-    </figure>
-</div> -->
 
-<div id="image-container" style="margin-top: 80px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
-  <figure class="image">
-    <img id="main-image" src="static/images/diagrams.png" usemap="#image-map" style="width: 100%; height: auto;">
-    <!-- Zoom overlay will be injected here -->
-    <div id="zoom-overlay"></div>
-  </figure>
-</div>
+<section class="section hero" style="background-color: #f0f0f0; margin-top: 80px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Fine-Tuning Results</h2> <!-- Header now larger and bolder -->
+    </div>
+  </div>
+</section>
 
-<div class="content has-text-justified" style="width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+
+
+<!-- finetuning -->
+
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
     <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <br><b>Qualitative results by tissue type.</b> CellCut predictions and ground truth annotations stratified by tissue type. Our method is able to handle various cell sizes and sparsities. Despite having no/few labels, CellCut can effectively discriminate between instance and background in highly homogeneous images. 
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/ours cyto3.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(a) Our Fine-Tuning</b>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </div>
+</section>
 
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/cyto3 zero.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(b) Zero-Shot</b>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
 
-<map name="image-map">
-  <area shape="rect" coords="0,0,100,100" href="javascript:void(0)" alt="Section 1" data-section="1">
-  <area shape="rect" coords="100,0,200,100" href="javascript:void(0)" alt="Section 2" data-section="2">
-  <area shape="rect" coords="200,0,300,100" href="javascript:void(0)" alt="Section 3" data-section="3">
-  <area shape="rect" coords="300,0,400,100" href="javascript:void(0)" alt="Section 4" data-section="4">
-  <area shape="rect" coords="400,0,500,100" href="javascript:void(0)" alt="Section 5" data-section="5">
-  <area shape="rect" coords="500,0,600,100" href="javascript:void(0)" alt="Section 6" data-section="6">
-  <area shape="rect" coords="0,100,100,200" href="javascript:void(0)" alt="Section 7" data-section="7">
-  <area shape="rect" coords="100,100,200,200" href="javascript:void(0)" alt="Section 8" data-section="8">
-  <area shape="rect" coords="200,100,300,200" href="javascript:void(0)" alt="Section 9" data-section="9">
-  <area shape="rect" coords="300,100,400,200" href="javascript:void(0)" alt="Section 10" data-section="10">
-  <area shape="rect" coords="400,100,500,200" href="javascript:void(0)" alt="Section 11" data-section="11">
-  <area shape="rect" coords="500,100,600,200" href="javascript:void(0)" alt="Section 12" data-section="12">
-  <area shape="rect" coords="0,200,100,300" href="javascript:void(0)" alt="Section 13" data-section="13">
-  <area shape="rect" coords="100,200,200,300" href="javascript:void(0)" alt="Section 14" data-section="14">
-  <area shape="rect" coords="200,200,300,300" href="javascript:void(0)" alt="Section 15" data-section="15">
-  <area shape="rect" coords="300,200,400,300" href="javascript:void(0)" alt="Section 16" data-section="16">
-  <area shape="rect" coords="400,200,500,300" href="javascript:void(0)" alt="Section 17" data-section="17">
-  <area shape="rect" coords="500,200,600,300" href="javascript:void(0)" alt="Section 18" data-section="18">
-</map>
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/cyto 3 few.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(c) Few-Shot</b>
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-<style>
-/* Style for the image container */
-#image-container {
-  position: relative;
-  display: flex;              /* Enable Flexbox for centering */
-  justify-content: center;    /* Center content horizontally */
-  align-items: center;        /* Center content vertically */
-  width: 100%;                /* Make container full width */
-  height: auto;               /* Allow height to adjust based on content */
-  margin: 0 auto;             /* Center the container itself */
-  max-width: 60%;
-}
-
-/* Ensure the image is responsive and centered */
-#main-image {
-  max-width: 100%;           /* Allow the image to scale to fit container width */
-  height: auto;              /* Maintain aspect ratio */
-  display: block;            /* Remove inline-block behavior */
-}
-
-/* Zoom overlay style */
-#zoom-overlay {
-  position: absolute;
-  border: 2px solid rgba(0, 0, 0, 0.5);
-  background-color: rgba(255, 255, 255, 0.7);
-  pointer-events: none;
-  display: none; /* Hide by default */
-  overflow: hidden;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 300px;  /* Twice the width of the section (150px x 2) */
-  height: 300px;  /* Twice the height of the section (150px x 2) */
-  top: 0;
-  left: 0;
-  background-size: 1200px 1200px; /* Zoom factor: adjust the background to be 1200x1200 */
-  /* Zoomed in image will cover an area 2x larger than the original size */
-  transition: left 0.2s, top 0.2s; /* Smooth transition for zoom positioning */
-}
-
-/* Ensure the container and body take full height for vertical centering */
-body, html {
-  height: 100%;
-  margin: 0;
-}
-
-
-</style>
-
-<script>
-
-
-const mainImage = document.getElementById('main-image');
-const areas = document.querySelectorAll('area');
-const zoomOverlay = document.getElementById('zoom-overlay');
-
-// Define the base image dimensions
-const baseImageWidth = 600; // Original width of the image
-const baseImageHeight = 300; // Original height of the image
-
-// Function to update area coordinates dynamically
-function updateAreaCoordinates() {
-  const imageWidth = mainImage.offsetWidth;
-  const imageHeight = mainImage.offsetHeight;
-
-  // Loop through each area to update its coords based on the image size
-  areas.forEach(area => {
-    // Original coords for each area (relative to 600x300 image size)
-    const coords = area.getAttribute('coords').split(',').map(coord => parseInt(coord));
-
-    // Recalculate the coordinates based on the actual image size
-    const updatedCoords = coords.map((coord, index) => {
-      if (index % 2 === 0) {
-        // x-coordinate (left and right)
-        return Math.round(coord * imageWidth / baseImageWidth);
-      } else {
-        // y-coordinate (top and bottom)
-        return Math.round(coord * imageHeight / baseImageHeight);
-      }
-    });
-
-    // Update the area with the new coordinates
-    area.setAttribute('coords', updatedCoords.join(','));
-  });
-}
-
-// Recalculate area coordinates when the page loads and when the window is resized
-window.onload = updateAreaCoordinates;
-window.onresize = updateAreaCoordinates;
-
-// Function to show the zoom overlay when hovering
-function showZoomOverlay(area) {
-  const section = area.getAttribute('data-section');
-  const row = Math.floor((section - 1) / 6);  // Row index (0-based)
-  const col = (section - 1) % 6;             // Column index (0-based)
-
-  // Calculate the position of the section based on the column and row
-  const sectionWidth = mainImage.offsetWidth / 6;
-  const sectionHeight = mainImage.offsetHeight / 3;
-
-  const zoom_multiple = 3;
-
-  const zoomX = col * sectionWidth * zoom_multiple;
-  const zoomY = row * sectionHeight * zoom_multiple;
-
-  // Set the zoom overlay position and background
-  zoomOverlay.style.left = `${col * sectionWidth - sectionWidth / (zoom_multiple/2)}px`;  // Offset to the left by half the section width
-  zoomOverlay.style.top = `${row * sectionHeight - sectionHeight / (zoom_multiple/2)}px`; // Offset upwards by half the section height
-  zoomOverlay.style.width = `${sectionWidth * zoom_multiple}px`;  
-  zoomOverlay.style.height = `${sectionHeight * zoom_multiple}px`; 
-
-  // Set the background image and background position to zoom into the right area
-  zoomOverlay.style.backgroundImage = `url('${mainImage.src}')`;
-  zoomOverlay.style.backgroundSize = `${mainImage.offsetWidth * zoom_multiple}px ${mainImage.offsetHeight * zoom_multiple}px`; // Zoomed image background (double size)
-  zoomOverlay.style.backgroundPosition = `-${zoomX}px -${zoomY}px`; // Offset background to zoom into the correct area
-
-  zoomOverlay.style.display = 'block'; // Show the zoom overlay
-}
-
-// Function to hide the zoom overlay when leaving the area
-function hideZoomOverlay() {
-  zoomOverlay.style.display = 'none'; // Hide the zoom overlay
-}
-
-// Event listeners for each area to trigger zoom on hover
-areas.forEach(area => {
-  area.addEventListener('mouseenter', () => {
-    showZoomOverlay(area);
-  });
-
-  area.addEventListener('mouseleave', () => {
-    hideZoomOverlay();
-  });
-});
-
-
-</script>
-
+<section style="margin-top: 10px; width: 100%; max-width: 60%; margin-left: auto; margin-right: auto;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <figure class="image">
+          <img src="static/images/cyto3 full.pdf" alt="Figure Missing" style="width: 100%; height: auto;">
+          <figcaption class="content has-text-centered" style="margin-top: 10px;">
+            <div class="columns is-centered">
+              <div class="column is-12 has-text-centered">
+                <br><b>(d) Fully Supervised</b>
+              </div>
+            </div>
+          </figcaption>
+          <figcaption class="content has-text-justified" style="margin-top: 10px;">
+            <div class="columns is-centered">
+            <div class="column is-four-fifths">
+            <br><b>Fine-tuning of Pre-trained SOTA Model.</b>  As the final step in our pipeline, we fine-tune a pre-trained SOTA cell segmentation on pseudo labels generated by our pipeline to create a general cell segmentation model. To achieve this, we fine-tune the Cellpose model on our semi-supervised Pannuke labels. Our baseline is the zero-shot performance of Cellpose on Pannuke. As the upper baseline, we train Cellpose on the full Pannuke training dataset (fully supervised). The above displays prediction and ground truth masks split by cell type using (a) our method, (b) zero-shot, (c) few-shot, and (d) fully supervised approaches with the cyto3 pre-trained model.
+          </div>
+        </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -566,7 +527,7 @@ areas.forEach(area => {
     <pre><code>@inproceedings{cellcut2025,
   title={CellCut: Unsupervised Cellular Image Segmentation through Self-Supervision},
   author={Marks, Markus and Mehta, Aditya and and Zabelo, Andrew and Kondapaneni, Neehar and Perona, Pietro.},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (ICCV)},
   year={2025}
 }</code></pre>
   </div>
@@ -578,7 +539,7 @@ areas.forEach(area => {
       <div class="column is-8">
         <div class="content">
           <p>
-            CVPR 2025 submission (Paper ID 7605). <br>
+            ICCV 2025 submission (Paper ID 6675). <br>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
           </p>
         </div>
